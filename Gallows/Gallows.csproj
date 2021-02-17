@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="hangman\Hangman-0.png" />
+    <None Remove="hangman\Hangman-1.png" />
+    <None Remove="hangman\Hangman-2.png" />
+    <None Remove="hangman\Hangman-3.png" />
+    <None Remove="hangman\Hangman-4.png" />
+    <None Remove="hangman\Hangman-5.png" />
+    <None Remove="hangman\Hangman-6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mvvm1125">
+      <HintPath>bin\Debug\netcoreapp3.1\Mvvm1125.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="hangman\Hangman-0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="hangman\Hangman-1.png" />
+    <Resource Include="hangman\Hangman-2.png" />
+    <Resource Include="hangman\Hangman-3.png" />
+    <Resource Include="hangman\Hangman-4.png" />
+    <Resource Include="hangman\Hangman-5.png" />
+    <Resource Include="hangman\Hangman-6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="word_rus.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

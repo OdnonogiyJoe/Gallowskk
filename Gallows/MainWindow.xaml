@@ -1,0 +1,52 @@
+﻿<Window x:Class="Gallows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gallows"
+        xmlns:vm="clr-namespace:Gallows.ViewModels"
+        mc:Ignorable="d"
+        Title="Виселица" Height="450" Width="600" Background="Gray">
+    <Window.Resources>
+        <DataTemplate x:Key="characterBox" DataType="ListBoxItem">
+            <TextBox Text="{Binding Character}" 
+                     GotFocus="TextBoxGotFocus"
+                     Padding="5"
+                     FontSize="15"
+                     IsEnabled="{Binding Unknown}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainVM />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Source="{Binding CurrentImage}" 
+               HorizontalAlignment="Center" 
+               Stretch="Uniform" />
+        <ListBox Grid.Row="1" 
+                 HorizontalAlignment="Center"
+                 ItemTemplate="{StaticResource characterBox}"
+                 ItemsSource="{Binding TryWord}" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="2">
+            <Button Content="Начать игру" 
+                Command="{Binding CommandStart}"/>
+            <Button Content="Угадать букву" 
+                Command="{Binding CommandTry}"/>
+            <TextBlock Text="{Binding GameResult}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
